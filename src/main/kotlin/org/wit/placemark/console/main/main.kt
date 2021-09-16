@@ -77,13 +77,24 @@ fun updatePlacemark() {
 
     if(aPlacemark != null) {
         print("Enter a new Title for [ " + aPlacemark.title + " ] : ")
-        aPlacemark.title = readLine()!!
+        var newTitle = readLine()!!
+        if (newTitle.isNotEmpty()){
+            aPlacemark.title = newTitle
+            println("You updated [ " + aPlacemark.title + " ] for title ")
+        }
+        else
+            logger.info(aPlacemark.title +"  Not Updated No Value added")
+            println()
         print("Enter a new Description for [ " + aPlacemark.description + " ] : ")
-        aPlacemark.description = readLine()!!
-        println(
-            "You updated [ " + aPlacemark.title + " ] for title " +
-                    "and [ " + aPlacemark.description + " ] for description"
-        )
+        var updatedDescription = readLine()!!
+        if (updatedDescription.isNotEmpty()){
+            aPlacemark.description = updatedDescription
+            println("and [ " + aPlacemark.description + " ] for description")
+        }
+        else
+            logger.info(aPlacemark.description +"  Not Updated No Value added")
+            println()
+
     }
     else
         println("Placemark Not Updated...")
