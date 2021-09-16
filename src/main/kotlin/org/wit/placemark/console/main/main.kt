@@ -1,8 +1,11 @@
-package org.wit.placemark
+package org.wit.placemark.console.main
 
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger {}
+
+var title = ""
+var description = ""
 
 fun main(args: Array<String>) {
     logger.info { "Launching Placemark Console App" }
@@ -13,7 +16,9 @@ fun main(args: Array<String>) {
     do {
         input = menu()
         when(input) {
-            1 -> println("You Chose Add Placemark")
+            1 -> addPlacemark()
+            2 -> updatePlacemark()
+            3 -> listPlacemarks()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
         }
@@ -47,14 +52,20 @@ fun addPlacemark(){
     println("Add Placemark")
     println()
     print("Enter a Title : ")
-
+    title = readLine()!!
+    print("Enter a Description : ")
+    description = readLine()!!
+    println("You entered [ $title ] for title and [ $description ] for description")
 }
 
 fun updatePlacemark() {
     println("Update Placemark")
     println()
-
-
+    print("Enter a new Title for [ $title ] : ")
+    title = readLine()!!
+    print("Enter a new Description for [ $description ] : ")
+    description = readLine()!!
+    println("You updated [ $title ] for title and [ $description ] for description")
 }
 
 fun listPlacemarks() {
