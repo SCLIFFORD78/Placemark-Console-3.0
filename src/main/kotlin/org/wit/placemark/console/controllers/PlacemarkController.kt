@@ -4,6 +4,7 @@ import mu.KotlinLogging
 import org.wit.placemark.console.models.PlacemarkMemStore
 import org.wit.placemark.console.models.PlacemarkModel
 import org.wit.placemark.console.views.PlacemarkView
+import kotlin.system.exitProcess
 
 class PlacemarkController {
 
@@ -14,6 +15,19 @@ class PlacemarkController {
     init {
         logger.info { "Launching Placemark Console App" }
         println("Placemark Kotlin App Version 1.0")
+        dummyData()
+    }
+    fun start(){
+        val option = menu()
+        when (option){
+            1 -> add()
+            2 -> update()
+            3 -> list()
+            4 -> search()
+            -1 -> exitProcess(-1)
+        }
+        start()
+
     }
 
     fun menu() :Int { return placemarkView.menu() }
